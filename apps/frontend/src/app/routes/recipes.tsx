@@ -1,5 +1,5 @@
-import { Home } from "../Home/Home";
-import type { Route } from "./+types/index";
+import { Recipes } from "~/features/Recipes";
+import type { Route } from "./+types/recipes";
 
 export function meta({}: Route.MetaArgs) {
 	return [
@@ -8,6 +8,6 @@ export function meta({}: Route.MetaArgs) {
 	];
 }
 
-export default function Index() {
-	return <Home />;
+export default function RecipesRoute() {
+	return <Recipes />;
 }

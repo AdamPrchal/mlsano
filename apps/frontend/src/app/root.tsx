@@ -1,4 +1,5 @@
 import "@mantine/core/styles.css";
+import "../i18n/config";
 
 import {
 	isRouteErrorResponse,
@@ -15,6 +16,7 @@ import {
 } from "@mantine/core";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+import { AppLayout } from "~/components/AppLayout";
 import type { Route } from "./+types/root";
 
 export const links: Route.LinksFunction = () => [
@@ -41,7 +43,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
 				<Links />
 			</head>
 			<body>
-				<MantineProvider>{children}</MantineProvider>
+				<MantineProvider>
+					<AppLayout>{children}</AppLayout>
+				</MantineProvider>
+
 				<ScrollRestoration />
 				<Scripts />
 			</body>
