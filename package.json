@@ -1,12 +1,14 @@
 {
   "name": "mlsano",
+  "private": "true",
+  "module": "index.ts",
   "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "concurrently --kill-others-on-fail \"pnpm --filter frontend dev\" \"pnpm --filter backend dev\"",
-    "build": "pnpm -r build"
-  },
-  "dependencies": {
-    "zod": "^3.24.2"
+    "dev": "bun --filter './packages/*' dev",
+    "clean": "rm -rf node_modules packages/frontend/node_modules packages/backend/node_modules bun.lockb packages/frontend/bun.lockb packages/backend/bun.lockb"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
