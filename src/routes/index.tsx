@@ -35,6 +35,7 @@ function Home() {
 
   return (
     <button
+      className="btn btn-primary"
       type="button"
       onClick={() => {
         updateCount({ data: 1 }).then(() => {

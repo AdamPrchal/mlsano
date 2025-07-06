@@ -1,4 +1,3 @@
-// src/routes/__root.tsx
 /// <reference types="vite/client" />
 import type { ReactNode } from "react";
 import {
@@ -7,6 +6,8 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+
+import appCss from "../styles/app.css?url";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -22,6 +23,7 @@ export const Route = createRootRoute({
         title: "Mlsano",
       },
     ],
+    links: [{ rel: "stylesheet", href: appCss }],
   }),
   component: RootComponent,
 });
@@ -36,7 +38,7 @@ function RootComponent() {
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html>
+    <html data-theme="bumblebee">
       <head>
         <HeadContent />
       </head>
