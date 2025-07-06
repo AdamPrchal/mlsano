@@ -3,10 +3,11 @@
 	"type": "module",
 	"version": "0.0.1",
 	"scripts": {
-	  "dev": "vite dev",
-	  "build": "vite build"
+		"dev": "vite dev",
+		"build": "vite build"
 	},
 	"dependencies": {
+		"@tanstack/eslint-config": "^0.2.0",
 		"@tanstack/react-router": "^1.125.1",
 		"@tanstack/react-start": "^1.125.1",
 		"@types/react": "^19.1.8",
@@ -17,5 +18,12 @@
 		"vite": "^7.0.2",
 		"vite-tsconfig-paths": "^5.1.4"
 	},
-	"packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b"
+	"packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b",
+	"devDependencies": {
+		"@eslint/js": "^9.30.1",
+		"eslint": "^9.30.1",
+		"eslint-plugin-react": "^7.37.5",
+		"globals": "^16.3.0",
+		"typescript-eslint": "^8.35.1"
+	}
 }
