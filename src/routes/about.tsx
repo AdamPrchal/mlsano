@@ -2,25 +2,26 @@
 import * as fs from "node:fs";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
+import { PageHeader } from "../components/PageHeader";
 
 export const Route = createFileRoute("/about")({
-  component: About,
+    component: About,
 });
 
 function About() {
-  const router = useRouter();
-  const state = Route.useLoaderData();
+    const router = useRouter();
+    const state = Route.useLoaderData();
 
-  return (
-    <main>
-      <article className="prose lg:prose-xl">
-        <h1>About Mlsano</h1>
-        <p>
-          Mlsano is web app for storing your recipes and make managing them a
-          breeze.
-        </p>
-        <p>Made by Adam Prchal</p>
-      </article>
-    </main>
-  );
+    return (
+        <>
+            <PageHeader title="O Mlsano" />
+            <article className="prose lg:prose-xl">
+                <p>
+                    Mlsano is web app for storing your recipes and make managing
+                    them a breeze.
+                </p>
+                <p>Made by Adam Prchal</p>
+            </article>
+        </>
+    );
 }

@@ -9,7 +9,7 @@ import {
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
 import appCss from "../styles/app.css?url";
-import { Navigation } from "~/components/Navigation";
+import { Navigation } from "../components/Navigation";
 
 export const Route = createRootRoute({
     head: () => ({
@@ -46,7 +46,9 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
                 <HeadContent />
             </head>
             <body>
-                {children}
+                <main className="mx-auto max-w-xl px-4 pt-8 pb-32">
+                    {children}
+                </main>
                 <Navigation />
                 <Scripts />
             </body>

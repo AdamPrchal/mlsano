@@ -1,18 +1,38 @@
 import { Link } from "@tanstack/react-router";
-import { Calendar, CookingPot } from "lucide-react";
+import { Calendar, CookingPot, Home } from "lucide-react";
+
+const navigationItems = [
+    {
+        to: "/",
+        icon: Home,
+        label: "Přehled",
+    },
+    {
+        to: "/recipes",
+        icon: CookingPot,
+        label: "Recepty",
+    },
+    {
+        to: "/about",
+        icon: Calendar,
+        label: "Plánovač",
+    },
+];
 
 export const Navigation = () => {
     return (
-        <div className="dock bg-neutral text-neutral-content mx-auto max-w-4xl">
-            <Link activeProps={{ className: "dock-active" }} to={"/"}>
-                <CookingPot />
-                <span className="dock-label">Recepty</span>
-            </Link>
-
-            <Link activeProps={{ className: "dock-active" }} to={"/about"}>
-                <Calendar />
-                <span className="dock-label">Plánovač</span>
-            </Link>
+        <div className="dock bg-neutral text-neutral-content mx-auto max-w-xl rounded-t-4xl">
+            {navigationItems.map(({ to, icon: Icon, label }) => (
+                <Link
+                    key={to}
+                    to={to}
+                    activeProps={{ className: "dock-active" }}
+                    className="dock-item"
+                >
+                    <Icon />
+                    <span className="dock-label">{label}</span>
+                </Link>
+            ))}
         </div>
     );
 };
