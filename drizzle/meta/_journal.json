@@ -4,16 +4,9 @@
   "entries": [
     {
       "idx": 0,
-      "version": "6",
-      "when": 1752337345246,
-      "tag": "0000_slim_captain_america",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "6",
-      "when": 1752697797834,
-      "tag": "0001_vengeful_hydra",
+      "version": "7",
+      "when": 1755762924368,
+      "tag": "0000_normal_paper_doll",
       "breakpoints": true
     }
   ]

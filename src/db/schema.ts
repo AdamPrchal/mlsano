@@ -1,57 +1,43 @@
-import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { sql } from "drizzle-orm";
 import { relations } from "drizzle-orm";
+import { pgTable, integer, text } from "drizzle-orm/pg-core";
 
-export const recipes = sqliteTable("recipes", {
-    id: int().primaryKey({ autoIncrement: true }),
+export const recipes = pgTable("recipes", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
     title: text().notNull(),
     created_at: text()
         .notNull()
         .default(sql`(current_timestamp)`),
-    cook_time: int(),
+    cook_time: integer(),
     image_url: text(),
     original_recipe_url: text(),
 });
 
-export const ingredients = sqliteTable("ingredients", {
-    id: int().primaryKey({ autoIncrement: true }),
-    name: text().notNull(),
-});
-
-export const recipeIngredients = sqliteTable("recipe_ingredients", {
-    id: int().primaryKey({ autoIncrement: true }),
-    recipeId: int().references(() => recipes.id, {
-        onDelete: "cascade",
-    }),
-    ingredientId: int().references(() => ingredients.id, {
-        onDelete: "set null",
-    }),
-    quantity: int().notNull(),
-    unit: text().notNull(),
-});
-
-export const tags = sqliteTable("tags", {
-    id: int().primaryKey({ autoIncrement: true }),
-    name: text().notNull(),
-});
-
-export const recipeTags = sqliteTable("recipe_tags", {
-    id: int().primaryKey({ autoIncrement: true }),
-    recipeId: int().references(() => recipes.id, {
-        onDelete: "cascade",
-    }),
-    tagId: int().references(() => tags.id),
-});
-
-// Relations
 export const recipesRelations = relations(recipes, ({ many }) => ({
     recipeIngredients: many(recipeIngredients),
     recipeTags: many(recipeTags),
 }));
 
+export const ingredients = pgTable("ingredients", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    name: text().notNull(),
+});
+
 export const ingredientsRelations = relations(ingredients, ({ many }) => ({
     recipeIngredients: many(recipeIngredients),
 }));
+
+export const recipeIngredients = pgTable("recipe_ingredients", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    recipeId: integer().references(() => recipes.id, {
+        onDelete: "cascade",
+    }),
+    ingredientId: integer().references(() => ingredients.id, {
+        onDelete: "set null",
+    }),
+    quantity: integer().notNull(),
+    unit: text().notNull(),
+});
 
 export const recipeIngredientsRelations = relations(
     recipeIngredients,
@@ -67,9 +53,22 @@ export const recipeIngredientsRelations = relations(
     }),
 );
 
+export const tags = pgTable("tags", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    name: text().notNull(),
+});
+
 export const tagsRelations = relations(tags, ({ many }) => ({
     recipeTags: many(recipeTags),
 }));
+
+export const recipeTags = pgTable("recipe_tags", {
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    recipeId: integer().references(() => recipes.id, {
+        onDelete: "cascade",
+    }),
+    tagId: integer().references(() => tags.id),
+});
 
 export const recipeTagsRelations = relations(recipeTags, ({ one }) => ({
     recipe: one(recipes, {

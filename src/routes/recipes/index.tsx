@@ -36,9 +36,9 @@ function Home() {
             {recipes.length > 0 ? (
                 <ul className="list bg-base-100 rounded-box shadow-md ">
                     {recipes.map((recipe, index) => (
-                        <li>
+                        <li key={recipe.id}>
                             <Link
-                                className="list-row hover:bg-neutral"
+                                className="list-row"
                                 to={"/"}
                             >
                                 <div className="text-4xl font-thin opacity-30 tabular-nums">
@@ -61,7 +61,10 @@ function Home() {
                                     </hgroup>
                                     <div className="text-xs uppercase font-semibold opacity-60">
                                         {recipe.recipeTags.map((t) => (
-                                            <div className="badge badge-soft ">
+                                            <div
+                                                key={t.id}
+                                                className="badge badge-soft "
+                                            >
                                                 {t.tag?.name}
                                             </div>
                                         ))}
