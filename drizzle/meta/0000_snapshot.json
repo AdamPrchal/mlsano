@@ -1,5 +1,5 @@
 {
-  "id": "9e256865-2d2c-4401-836f-b4bb9702cb4b",
+  "id": "3554faa4-d941-4f3e-b6c7-cc2a681ec416",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -219,10 +219,10 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "text",
+          "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
-          "default": "(current_timestamp)"
+          "default": "now()"
         },
         "cook_time": {
           "name": "cook_time",
