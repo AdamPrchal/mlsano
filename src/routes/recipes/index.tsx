@@ -17,6 +17,7 @@ const getRecipes = createServerFn({
                 },
             },
         },
+        orderBy: (recipes, { desc }) => [desc(recipes.id)],
     });
 });
 
@@ -41,7 +42,11 @@ function Home() {
                 <ul className="list bg-base-100 rounded-box shadow-md ">
                     {recipes.map((recipe, index) => (
                         <li key={recipe.id}>
-                            <Link className="list-row" to={"/"}>
+                            <Link
+                                className="list-row"
+                                to={`/recipes/$recipeId`}
+                                params={{ recipeId: String(recipe.id) }}
+                            >
                                 <div className="text-4xl font-thin opacity-30 tabular-nums">
                                     {index < 10 && "0"}
                                     {index < 100 && "0"}
