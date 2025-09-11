@@ -1,5 +1,14 @@
 import { relations } from "drizzle-orm";
-import { pgTable, integer, text, timestamp } from "drizzle-orm/pg-core";
+import {
+    pgTable,
+    integer,
+    text,
+    timestamp,
+    uniqueIndex,
+    pgEnum,
+    date,
+    unique,
+} from "drizzle-orm/pg-core";
 import { createSchemaFactory, createSelectSchema } from "drizzle-zod";
 
 const { createInsertSchema } = createSchemaFactory({
@@ -92,5 +101,38 @@ export const recipeTagsRelations = relations(recipeTags, ({ one }) => ({
     tag: one(tags, {
         fields: [recipeTags.tagId],
         references: [tags.id],
+    }),
+}));
+
+export const mealTypeEnum = pgEnum("meal_type", ["lunch", "dinner"]);
+
+export const mealPlans = pgTable(
+    "meal_plans",
+    {
+        id: integer().primaryKey().generatedAlwaysAsIdentity(),
+        day: date("day").notNull(),
+        mealType: mealTypeEnum("meal_type").notNull(),
+        servings: integer().default(4),
+        note: text(),
+        recipeId: integer("recipe_id")
+            .notNull()
+            .references(() => recipes.id, { onDelete: "cascade" }),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+    },
+    (table) => [
+        unique("meal_plans_day_meal_type_uniq").on(table.day, table.mealType),
+    ],
+);
+
+export type MealPlan = {
+  
+  
+}
+
+// Relace
+export const mealPlansRelations = relations(mealPlans, ({ one }) => ({
+    recipe: one(recipes, {
+        fields: [mealPlans.recipeId],
+        references: [recipes.id],
     }),
 }));

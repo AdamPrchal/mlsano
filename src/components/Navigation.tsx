@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Calendar, CookingPot, Home } from "lucide-react";
+import { Calendar, ChefHat, Home } from "lucide-react";
 
 const navigationItems = [
     {
@@ -9,11 +9,11 @@ const navigationItems = [
     },
     {
         to: "/recipes",
-        icon: CookingPot,
+        icon: ChefHat,
         label: "Recepty",
     },
     {
-        to: "/about",
+        to: "/planner",
         icon: Calendar,
         label: "Plánovač",
     },
