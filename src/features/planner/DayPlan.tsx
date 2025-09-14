@@ -11,15 +11,20 @@ type DayPlanProps = {
     meals: MealPlans;
 };
 
+const MEAL_TYPES = [
+    { title: "Oběd", key: "lunch" },
+    { title: "Večeře", key: "dinner" },
+];
+
 export const DayPlan = ({ day, meals }: DayPlanProps) => {
     const lunch = meals.filter((meal) => meal.mealType === "lunch");
     const dinner = meals.filter((meal) => meal.mealType === "dinner");
 
     return (
         <ul
-            className={`${isToday(day) ? "border-1 border-primary" : ""} bg-base-200 list rounded-box shadow-md p-4`}
+            className={`${isToday(day) ? "border-1 border-primary" : ""} bg-base-200 list rounded-box shadow-md p-8`}
         >
-            <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">
+            <li className="pb-2 text-xs opacity-60 tracking-wide">
                 <hgroup className={isToday(day) ? "text-primary" : ""}>
                     <h2 className="text-4xl font-bold capitalize ">
                         {format(day, "EEEE", { locale: cs })}
@@ -30,18 +35,31 @@ export const DayPlan = ({ day, meals }: DayPlanProps) => {
                 </hgroup>
             </li>
 
-            <li className="px-4 opacity-60">
-                <h3 className="text-lg font-black">Oběd</h3>
-            </li>
-            {lunch.map((meal) => (
-                <MealRow meal={meal} />
-            ))}
-            <li className="px-4 opacity-60 mt-4">
-                <h3 className="text-lg font-black">Večeře</h3>
-            </li>
-            {dinner.map((meal) => (
-                <MealRow meal={meal} />
-            ))}
+            <ul className="space-y-4">
+                {MEAL_TYPES.map((mealRec) => {
+                    const currentMeals = meals.filter(
+                        (meal) => meal.mealType === mealRec.key,
+                    );
+                    const modalId = `${day.toISOString()}${mealRec.key}`;
+                    return (
+                        <li>
+                            <h3 className="text-lg font-black opacity-60 ">
+                                {mealRec.title}
+                            </h3>
+                            {currentMeals.length === 0 && (
+                                <>
+                                    <button className="btn" onClick={() => {}}>
+                                        Vybrat recept
+                                    </button>
+                                </>
+                            )}
+                            {currentMeals.map((meal) => (
+                                <MealRow meal={meal} />
+                            ))}
+                        </li>
+                    );
+                })}
+            </ul>
         </ul>
     );
 };

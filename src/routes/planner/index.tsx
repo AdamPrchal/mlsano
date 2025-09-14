@@ -54,7 +54,7 @@ function Planner() {
     return (
         <>
             <PageHeader title="Plánovač" />
-            <Plan today={new Date()} mealPlans={mealPlans} />
+            <Plan mealPlans={mealPlans} />
         </>
     );
 }
