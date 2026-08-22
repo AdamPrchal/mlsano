@@ -7,12 +7,12 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.2.2",
+    "@tailwindcss/vite": "^4.3.3",
     "@tanstack/eslint-config": "^0.4.0",
     "@tanstack/react-form": "^1.28.5",
-    "@tanstack/react-router": "^1.168.8",
+    "@tanstack/react-router": "^1.170.31",
     "@tanstack/react-router-devtools": "^1.166.11",
-    "@tanstack/react-start": "^1.167.13",
+    "@tanstack/react-start": "^1.168.48",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "date-fns": "^4.1.0",
@@ -26,7 +26,7 @@
     "react-hook-form": "^7.72.0",
     "tailwindcss": "^4.2.2",
     "typescript": "^5.9.3",
-    "vite": "^7.3.1",
+    "vite": "^7.3.6",
     "vite-tsconfig-paths": "^5.1.4",
     "zod": "^4.3.6"
   },
@@ -42,7 +42,7 @@
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.5.0",
     "prettier": "3.8.1",
-    "tsx": "^4.21.0",
+    "tsx": "^4.23.12",
     "typescript-eslint": "^8.57.2"
   },
   "pnpm": {
@@ -51,14 +51,20 @@
       "minimatch@>=10.0.0 <10.2.1": "10.2.4",
       "@isaacs/brace-expansion@<5.0.1": "5.0.1",
       "flatted@<3.4.0": "3.4.2",
-      "undici@>=7.0.0 <7.24.0": "7.24.6",
+      "undici@>=7.0.0 <7.29.0": "7.29.0",
       "picomatch@4.0.3": "4.0.4",
       "picomatch@<2.3.2": "2.3.2",
       "yaml@>=2.0.0 <2.8.3": "2.8.3",
       "diff@>=6.0.0 <8.0.3": "8.0.4",
       "h3@*": "2.0.1-rc.20",
-      "brace-expansion@<1.1.13": "1.1.13",
-      "nanoid@<3.3.18": "3.3.18"
+      "brace-expansion@<1.1.18": "1.1.18",
+      "nanoid@<3.3.18": "3.3.18",
+      "brace-expansion@>=2.0.0 <5.0.9": "5.0.9",
+      "js-yaml@>=4.0.0 <4.3.1": "4.3.1",
+      "postcss@<8.5.23": "8.5.26",
+      "ws@>=8.0.0 <8.21.0": "8.21.3",
+      "@babel/core@<7.29.6": "7.29.7",
+      "esbuild@<0.28.2": "0.28.2"
     }
   }
 }
