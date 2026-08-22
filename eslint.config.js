@@ -19,6 +19,6 @@ export default defineConfig([
   },
   tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
-  reactPlugin.configs.flat["jsx-runtime"], // Add this if you are using React 17+
+  pluginReact.configs.flat["jsx-runtime"], // Add this if you are using React 17+
   eslintConfigPrettier,
 ]);

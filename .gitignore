@@ -21,3 +21,5 @@ yarn.lock
 
 *.db
 /src/db/scripts
+# build output
+dist
